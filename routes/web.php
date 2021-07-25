@@ -1,18 +1,19 @@
 <?php
 
-use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\CsvUploadAction;
+use Illuminate\Routing\Router;
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
+/** @var Router $router */
+$router = app(Router::class);
 
-Route::get('/', function () {
-    return view('welcome');
-});
+$router->view('/', 'welcome');
+
+$router->view('/dashboard', 'dashboard')
+    ->middleware(['auth'])
+    ->name('dashboard');
+
+$router->post('/dashboard', CsvUploadAction::class)
+    ->middleware(['auth'])
+    ->name('csv.upload');
+
+require __DIR__.'/auth.php';
