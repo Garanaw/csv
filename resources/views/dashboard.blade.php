@@ -49,7 +49,10 @@
                                 </div>
                             </div>
 
-                            <button type="submit">
+                            <button
+                                type="submit"
+                                class="block bg-green-500 hover:bg-green-700 text-white uppercase text-lg mx-auto mt-10 p-4 rounded"
+                            >
                                 Submit
                             </button>
                         </form>
